@@ -1,0 +1,43 @@
+<div style="text-align: center">
+    <img src="{{MEDIA}}title.png" style="max-height: 350px">
+</div>
+<p>Tenemos un reloj que est&aacute; descompuesto, pero sabemos lo r&aacute;pido que se adelanta o cuanto se retrasa durante un per&iacute;odo espec&iacute;fico de tiempo. Al comienzo, nuestro reloj muestra la hora correcta, pero despu&eacute;s de un tiempo comienza a mostrar una hora equivocada. Sin embargo, en lugar de corregir el reloj cada vez, vamos a utilizar un algoritmo para calcular la hora correcta, teniendo en cuenta la diferencia esperada con respecto a la hora actual. Por supuesto vamos a tener acceso a la hora correcta para cada d&iacute;a y adem&aacute;s, puedes estar seguro que la hora de partida correcta as&iacute; como el tiempo actual transcurrido ocurren el mismo d&iacute;a. Para esta misi&oacute;n, el tiempo se mide en un formato de 24 horas.</p>
+
+<p>Se te informar&aacute;n tres valores. El primero es la hora de inicio (<em>la cual sabemos que es correcta</em>). El segundo es la hora actual que muestra nuestro reloj descompuesto (<em>y que sabemos es incorrecta</em>). Ten en cuenta que estos valores se dan como cadenas (<em>strings</em>) usando el siguiente formato &quot;hh: mm: ss&quot; (Ejemplos: &quot;01:16:59&quot; y &quot;23:00:13&quot;). El tercer valor corresponde a la descripci&oacute;n del error del reloj en el formato de &quot;+(-) N [segundos, minutos, horas](s) en M [segundos, minutos, horas](s)&quot;. Por ejemplo, &quot;+1 segundo en 10 segundos&quot; - el reloj es r&aacute;pido 1 segundo por cada 10 segundos de tiempo real y &quot;-5 minutos en 5 horas&quot; - el reloj se retrasa 5 minutos por cada 5 horas de tiempo real.</p>
+
+<p>Deber&aacute;s calcular la hora real con los valores dados. El resultado deber&aacute; ser redondeado al segundo m&aacute;s cercano (usa <em>floor </em>o <em>int</em>).</p>
+
+<p>Examinemos un ejemplo  -- '00:00:00', '00:00:30', '+2 seconds at 6 seconds'.<br />
+0&ordf; etapa: La hora real y la hora de nuestro reloj son &quot;00:00:00&quot;.<br />
+Cuando la hora real es &quot;00:00:06&quot;, nuestro reloj marca &quot;00:00:08&quot;.<br />
+Cuando la hora real es &quot;00:00:18&quot;, nuestro reloj marca &quot;00:00:24&quot;.<br />
+Cuando la hora real es &quot;00:00:21&quot;, nuestro reloj marca &quot;00:00:28&quot;.<br />
+Cuando la hora real es &quot;00:00:22&quot;, nuestro reloj marca &quot;00: 00: 29,333 ...&quot;.<br />
+Cuando la hora real es &quot;00: 00: 22.5&quot;, nuestro reloj marca &quot;00:00:30&quot;.<br />
+As&iacute; que la respuesta es &quot;00: 00: 22.5&quot;, y despu&eacute;s de redondeo &quot;0:00:22&quot;</p>
+
+<p><strong>Datos de Entrada:</strong> Tres argumentos. Hora exacta de partida, hora actual que indica nuestro reloj y las especificaciones del reloj, como cadenas (<em>str</em>).</p>
+
+<p><strong>Salida:</strong> La hora real, como una cadena (<em>str</em>).</p>
+
+<div class="for_info_only">
+    <strong>Ejemplo:</strong>
+<pre class="brush: python">{% if interpreter.slug == "js-node" %}
+brokenClock('00:00:00', '00:00:15', '+5 seconds at 10 seconds') ==  '00:00:10'
+brokenClock('06:10:00', '06:10:15', '-5 seconds at 10 seconds') ==  '06:10:30'
+brokenClock('13:00:00', '14:01:00', '+1 second at 1 minute') ==  '14:00:00'
+brokenClock('01:05:05', '04:05:05', '-1 hour at 2 hours') ==  '07:05:05'
+brokenClock('00:00:00', '00:00:30', '+2 seconds at 6 seconds') ==  '00:00:22'
+{% else %}
+broken_clock('00:00:00', '00:00:15', '+5 seconds at 10 seconds') ==  '00:00:10'
+broken_clock('06:10:00', '06:10:15', '-5 seconds at 10 seconds') ==  '06:10:30'
+broken_clock('13:00:00', '14:01:00', '+1 second at 1 minute') ==  '14:00:00'
+broken_clock('01:05:05', '04:05:05', '-1 hour at 2 hours') ==  '07:05:05'
+broken_clock('00:00:00', '00:00:30', '+2 seconds at 6 seconds') ==  '00:00:22'
+{% endif %}</pre>
+</div>
+
+<p class="for_info_only"><strong>&iquest;C&oacute;mo se usa?: </strong> As&iacute; no lo creas, esta misi&oacute;n te est&aacute; ense&ntilde;ando algunos principios utilizados en la localizaci&oacute;n por GPS. Debido a que los sat&eacute;lites en &oacute;rbita se mueven muy r&aacute;pido, es necesario tener en cuenta la relatividad. As&iacute;, cuando tenemos en cuenta la velocidad del sat&eacute;lite, se puede estimar la diferencia con respecto a la hora en la tierra y escribir un programa para compensar.</p>
+
+<p><strong>Condiciones:</strong><br />
+&quot;wrong_time&quot; es posterior a &quot;starting_time&quot;.</p>
